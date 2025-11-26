@@ -1,0 +1,2812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniruddh Parmar - Associate Data / AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background with Particles */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100vw, -100vh);
+                opacity: 0;
+            }
+        }
+
+        .grid-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 30s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #cccccc;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 5% 80px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 13px;
+            margin-bottom: 35px;
+            background: rgba(255,255,255,0.03);
+            animation: fadeInScale 1s ease-out;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #ffffff 0%, #999999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            color: #888888;
+            margin-bottom: 35px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #bbbbbb;
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+
+        .stat-item {
+            border-left: 2px solid rgba(255,255,255,0.2);
+            padding-left: 20px;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .code-window {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .code-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .code-content {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #888888;
+        }
+
+        .code-line {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+            animation: typeLine 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 1s; }
+        .code-line:nth-child(2) { animation-delay: 1.2s; }
+        .code-line:nth-child(3) { animation-delay: 1.4s; }
+        .code-line:nth-child(4) { animation-delay: 1.6s; }
+        .code-line:nth-child(5) { animation-delay: 1.8s; }
+        .code-line:nth-child(6) { animation-delay: 2s; }
+        .code-line:nth-child(7) { animation-delay: 2.2s; }
+        .code-line:nth-child(8) { animation-delay: 2.4s; }
+
+        @keyframes typeLine {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .line-number {
+            color: #444444;
+            user-select: none;
+        }
+
+        .keyword { color: #ff79c6; }
+        .function { color: #50fa7b; }
+        .string { color: #f1fa8c; }
+        .comment { color: #6272a4; }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -2px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #888888;
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: 0.5px;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #bbbbbb;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .about-highlight {
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid #ffffff;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .about-skills {
+            display: grid;
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            font-size: 14px;
+            color: #cccccc;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .project-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 25px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .project-tech {
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .project-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #bbbbbb;
+            margin-bottom: 25px;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .project-highlights li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        .project-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-tag {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5px;
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            padding: 40px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -62px;
+            top: 50px;
+            width: 16px;
+            height: 16px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        .timeline-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .timeline-company {
+            font-size: 16px;
+            color: #888888;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .timeline-section {
+            margin-bottom: 35px;
+        }
+
+        .timeline-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .timeline-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #bbbbbb;
+            margin-bottom: 25px;
+        }
+
+        .timeline-highlights {
+            list-style: none;
+        }
+
+        .timeline-highlights li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 14px;
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.7;
+        }
+
+        .timeline-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+        }
+
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .cert-card:hover::before {
+            left: 100%;
+        }
+
+        .cert-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .cert-icon {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .cert-card:hover .cert-icon {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .cert-text {
+            font-size: 16px;
+            color: #cccccc;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-issuer {
+            font-size: 13px;
+            color: #888888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.1);
+        }
+
+        .contact-label {
+            font-size: 13px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #cccccc;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 50px 5%;
+            text-align: center;
+            color: #888888;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 25px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -42px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .scroll-line {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, transparent, #ffffff);
+        }
+
+        /* Robot Animation */
+        .robot-container {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            margin: 0 auto;
+        }
+
+        .robot {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Robot Head */
+        .robot-head {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: headFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes headFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Robot Antenna */
+        .robot-antenna {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 35px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            border-radius: 2px;
+        }
+
+        .antenna-bulb {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #00ff00;
+            animation: antennaBlink 2s ease-in-out infinite;
+        }
+
+        @keyframes antennaBlink {
+            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateX(-50%) scale(1.2); }
+        }
+
+        /* Robot Eyes Container */
+        .robot-eyes {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .eye {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .pupil {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #333, #000);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        .eye-shine {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 8px;
+            left: 8px;
+            pointer-events: none;
+        }
+
+        /* Robot Mouth */
+        .robot-mouth {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 0 0 40px 40px;
+            border-top: none;
+            animation: mouthTalk 4s ease-in-out infinite;
+        }
+
+        @keyframes mouthTalk {
+            0%, 100% { height: 30px; }
+            50% { height: 25px; }
+        }
+
+        .mouth-line {
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            left: 20%;
+            animation: mouthLine 4s ease-in-out infinite;
+        }
+
+        .mouth-line:nth-child(1) { top: 8px; }
+        .mouth-line:nth-child(2) { top: 16px; }
+
+        @keyframes mouthLine {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Robot Body */
+        .robot-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Robot Panel */
+        .robot-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 60px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .panel-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: panelBlink 1.5s ease-in-out infinite;
+        }
+
+        .panel-light:nth-child(1) {
+            background: #ff0000;
+            box-shadow: 0 0 10px #ff0000;
+            animation-delay: 0s;
+        }
+
+        .panel-light:nth-child(2) {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            animation-delay: 0.3s;
+        }
+
+        .panel-light:nth-child(3) {
+            background: #0000ff;
+            box-shadow: 0 0 10px #0000ff;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes panelBlink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Robot Arms */
+        .robot-arm {
+            position: absolute;
+            width: 20px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            top: 240px;
+        }
+
+        .robot-arm.left {
+            left: 30px;
+            animation: armWaveLeft 3s ease-in-out infinite;
+        }
+
+        .robot-arm.right {
+            right: 30px;
+            animation: armWaveRight 3s ease-in-out infinite;
+        }
+
+        @keyframes armWaveLeft {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-15deg); }
+        }
+
+        @keyframes armWaveRight {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .robot-hand {
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        /* Decorative elements */
+        .robot-head::before,
+        .robot-head::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: 30px;
+        }
+
+        .robot-head::before {
+            left: 15px;
+        }
+
+        .robot-head::after {
+            right: 15px;
+        }
+
+        /* Floating Mini Robot Assistant - Side by Side */
+        .mini-robot-assistant {
+            position: fixed;
+            width: 90px;
+            height: 120px;
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: auto;
+        }
+
+        /* Position mini robot next to main robot */
+        .mini-robot-assistant.side-position {
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Position for conversation - below main robot */
+        .mini-robot-assistant.conversation-position {
+            animation: excitedBounce 0.5s ease-in-out infinite;
+        }
+
+        @keyframes excitedBounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        /* Hide mini robot when not on home section */
+        body:not(.on-home) .mini-robot-assistant {
+            display: none;
+        }
+
+        .mini-robot-assistant:hover {
+            transform: scale(1.1) !important;
+        }
+
+        .mini-robot {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Different look - Smaller, rounded, different colors */
+        .mini-head {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(100,200,255,0.2), rgba(50,150,255,0.15));
+            border: 2px solid rgba(100,200,255,0.4);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(100,200,255,0.3);
+        }
+
+        .mini-antenna {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 15px;
+            background: rgba(100,200,255,0.4);
+        }
+
+        .mini-antenna-bulb {
+            position: absolute;
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ffff;
+            animation: miniAntennaBlink 1.2s ease-in-out infinite;
+        }
+
+        @keyframes miniAntennaBlink {
+            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.4; transform: translateX(-50%) scale(1.3); }
+        }
+
+        .mini-eyes {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mini-eye {
+            width: 10px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            border: 1px solid rgba(100,200,255,0.4);
+            position: relative;
+        }
+
+        .mini-pupil {
+            position: absolute;
+            width: 5px;
+            height: 7px;
+            background: #000;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .mini-mouth {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 7px;
+            border: 1px solid rgba(100,200,255,0.4);
+            border-radius: 0 0 9px 9px;
+            border-top: none;
+        }
+
+        .mini-body {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 32px;
+            background: linear-gradient(135deg, rgba(100,200,255,0.15), rgba(50,150,255,0.08));
+            border: 2px solid rgba(100,200,255,0.4);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(100,200,255,0.2);
+        }
+
+        .mini-panel {
+            position: absolute;
+            top: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+        }
+
+        .mini-light {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: miniPanelBlink 1.8s ease-in-out infinite;
+        }
+
+        .mini-light:nth-child(1) {
+            background: #ff00ff;
+            box-shadow: 0 0 5px #ff00ff;
+            animation-delay: 0s;
+        }
+
+        .mini-light:nth-child(2) {
+            background: #00ffff;
+            box-shadow: 0 0 5px #00ffff;
+            animation-delay: 0.4s;
+        }
+
+        .mini-light:nth-child(3) {
+            background: #ffff00;
+            box-shadow: 0 0 5px #ffff00;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes miniPanelBlink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Rocket Suit - Different color scheme */
+        .rocket-suit {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 45px;
+        }
+
+        .rocket-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(100,200,255,0.25), rgba(50,150,200,0.15));
+            border: 2px solid rgba(100,200,255,0.4);
+            border-radius: 10px 10px 5px 5px;
+        }
+
+        .rocket-flame {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, rgba(0,255,255,0.8), rgba(0,150,255,0.4), transparent);
+            border-radius: 50%;
+            animation: flameFlicker 0.25s ease-in-out infinite;
+        }
+
+        @keyframes flameFlicker {
+            0%, 100% {
+                height: 18px;
+                opacity: 1;
+            }
+            50% {
+                height: 14px;
+                opacity: 0.7;
+            }
+        }
+
+        .rocket-wing {
+            position: absolute;
+            bottom: 5px;
+            width: 10px;
+            height: 16px;
+            background: linear-gradient(135deg, rgba(100,200,255,0.2), rgba(50,150,200,0.1));
+            border: 1px solid rgba(100,200,255,0.4);
+        }
+
+        .rocket-wing.left {
+            left: -7px;
+            border-radius: 5px 0 0 5px;
+            transform: skewY(-10deg);
+        }
+
+        .rocket-wing.right {
+            right: -7px;
+            border-radius: 0 5px 5px 0;
+            transform: skewY(10deg);
+        }
+
+        /* Waving Hand */
+        .waving-hand {
+            position: absolute;
+            top: 42px;
+            right: -3px;
+            width: 15px;
+            height: 25px;
+            transform-origin: top center;
+            animation: wave 0.8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-30deg);
+            }
+            75% {
+                transform: rotate(30deg);
+            }
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 0;
+            width: 13px;
+            height: 13px;
+            background: rgba(100,200,255,0.25);
+            border: 2px solid rgba(100,200,255,0.4);
+            border-radius: 50%;
+        }
+
+        .arm {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 15px;
+            background: rgba(100,200,255,0.2);
+            border: 1px solid rgba(100,200,255,0.4);
+            border-radius: 2px;
+        }
+
+        /* Speech Bubble */
+        .speech-bubble {
+            position: absolute;
+            bottom: 130px;
+            right: -10px;
+            background: rgba(255,255,255,0.95);
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            min-width: 250px;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-size: 14px;
+            line-height: 1.6;
+            z-index: 1000;
+        }
+
+        .speech-bubble.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 30px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(255,255,255,0.95);
+        }
+
+        .speech-bubble strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .close-bubble {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            line-height: 1;
+        }
+
+        .close-bubble:hover {
+            color: #000;
+        }
+
+        /* Main Robot Expressions */
+        .robot-expression {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .robot-expression.show {
+            opacity: 1;
+        }
+
+        /* Conversation Bubbles for Both Robots */
+        .robot-chat-bubble {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            color: #000;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1001;
+            white-space: nowrap;
+        }
+
+        .robot-chat-bubble.show {
+            opacity: 1;
+        }
+
+        .main-robot-bubble {
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .main-robot-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid rgba(255,255,255,0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-bg"></div>
+
+    <!-- Floating Mini Robot Assistant -->
+    <div class="mini-robot-assistant" id="miniRobotAssistant">
+        <div class="speech-bubble" id="speechBubble">
+            <span class="close-bubble" onclick="closeSpeech()">×</span>
+            <span id="speechText"></span>
+        </div>
+        <div class="mini-robot">
+            <div class="mini-head">
+                <div class="mini-antenna">
+                    <div class="mini-antenna-bulb"></div>
+                </div>
+                <div class="mini-eyes">
+                    <div class="mini-eye">
+                        <div class="mini-pupil"></div>
+                    </div>
+                    <div class="mini-eye">
+                        <div class="mini-pupil"></div>
+                    </div>
+                </div>
+                <div class="mini-mouth"></div>
+            </div>
+            <div class="waving-hand">
+                <div class="arm"></div>
+                <div class="hand"></div>
+            </div>
+            <div class="mini-body">
+                <div class="mini-panel">
+                    <div class="mini-light"></div>
+                    <div class="mini-light"></div>
+                    <div class="mini-light"></div>
+                </div>
+            </div>
+            <div class="rocket-suit">
+                <div class="rocket-body">
+                    <div class="rocket-wing left"></div>
+                    <div class="rocket-wing right"></div>
+                </div>
+                <div class="rocket-flame"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Aniruddh Parmar</h1>
+                <h2>Associate Data / AI Engineer</h2>
+                <p class="hero-description">
+                    Building intelligent data systems with AI/ML, LLMs, and cloud-native architectures. 
+                    Specializing in FastAPI backend development, RAG applications, vector databases, 
+                    and enterprise ETL pipelines on Azure to deliver scalable, production-grade solutions.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2.5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Gen AI & ML</span>
+                        <span class="stat-label">Focus Area</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Data Engineering</span>
+                        <span class="stat-label">Specialization</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get in Touch</span>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="robot-container">
+                    <div class="robot">
+                        <!-- Robot Head -->
+                        <div class="robot-head">
+                            <div class="robot-expression" id="mainRobotExpression"></div>
+                            <div class="robot-chat-bubble main-robot-bubble" id="mainRobotBubble"></div>
+                            <div class="robot-antenna">
+                                <div class="antenna-bulb"></div>
+                            </div>
+                            
+                            <!-- Eyes that follow mouse -->
+                            <div class="robot-eyes">
+                                <div class="eye" id="leftEye">
+                                    <div class="pupil" id="leftPupil"></div>
+                                    <div class="eye-shine"></div>
+                                </div>
+                                <div class="eye" id="rightEye">
+                                    <div class="pupil" id="rightPupil"></div>
+                                    <div class="eye-shine"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mouth -->
+                            <div class="robot-mouth">
+                                <div class="mouth-line"></div>
+                                <div class="mouth-line"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Robot Body -->
+                        <div class="robot-body">
+                            <div class="robot-panel">
+                                <div class="panel-light"></div>
+                                <div class="panel-light"></div>
+                                <div class="panel-light"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Robot Arms -->
+                        <div class="robot-arm left">
+                            <div class="robot-hand"></div>
+                        </div>
+                        <div class="robot-arm right">
+                            <div class="robot-hand"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">AI Engineer | Backend Developer | Data Architect</p>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a passionate Associate Data / AI Engineer at Rishabh Software, specializing in 
+                        building intelligent backend systems and AI-powered applications. My expertise spans 
+                        LLM integration, RAG architectures, vector databases, and enterprise data engineering.
+                    </p>
+                    <p>
+                        I design and deploy production-grade AI services using FastAPI, integrating cutting-edge 
+                        LLM APIs (OpenAI, Anthropic Claude) with vector databases like Milvus and Pinecone. 
+                        My work focuses on creating scalable microservices, implementing semantic search, 
+                        and building retrieval-augmented generation systems.
+                    </p>
+                    <div class="about-highlight">
+                        <p>
+                            <strong>Core Expertise:</strong> AI/ML Backend Development, LLM Integration, 
+                            RAG Applications, Vector Databases, FastAPI Microservices, Azure Data Engineering, 
+                            ETL Pipelines, NLP, Containerization (Docker/Kubernetes), and Cloud Architecture.
+                        </p>
+                    </div>
+                    <p>
+                        Beyond AI engineering, I have deep experience in Azure data platforms, building robust 
+                        ETL pipelines with Azure Data Factory and Databricks. I combine my data engineering 
+                        foundation with AI/ML capabilities to deliver end-to-end intelligent solutions that 
+                        drive business value.
+                    </p>
+                </div>
+
+                <div class="about-skills">
+                    <div class="skill-category">
+                        <h3>AI/ML & NLP</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">LLMs (OpenAI)</span>
+                            <span class="skill-tag">Anthropic Claude</span>
+                            <span class="skill-tag">RAG Systems</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">Milvus</span>
+                            <span class="skill-tag">Pinecone</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">Sentence Transformers</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">scikit-learn</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Programming & Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">PySpark</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Pandas</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Azure Services & Cloud</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Azure Data Factory</span>
+                            <span class="skill-tag">Azure Databricks</span>
+                            <span class="skill-tag">Azure SQL Database</span>
+                            <span class="skill-tag">Azure Data Lake</span>
+                            <span class="skill-tag">AKS</span>
+                            <span class="skill-tag">ACI</span>
+                            <span class="skill-tag">Application Insights</span>
+                            <span class="skill-tag">Blob Storage</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Azure SQL</span>
+                            <span class="skill-tag">SQL Server</span>
+                            <span class="skill-tag">Vector Databases</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>DevOps & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Azure DevOps</span>
+                            <span class="skill-tag">MLOps</span>
+                            <span class="skill-tag">Microservices</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Data & Analytics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">ETL</span>
+                            <span class="skill-tag">Data Modeling</span>
+                            <span class="skill-tag">Data Warehousing</span>
+                            <span class="skill-tag">Data Pipelines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">AI-powered solutions and data engineering excellence</p>
+
+            <div class="projects-grid">
+                <!-- AI/ML Projects -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Natural Language to SQL (NL2SQL)</h3>
+                            <p class="project-tech">Python | FastAPI | OpenAI | LangChain | SQL</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Developed an intelligent NL2SQL system enabling non-technical users to query databases 
+                        using natural conversational language. Implemented semantic parsing and automated 
+                        query generation logic with LLM integration.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Built semantic parsing engine to convert natural language into SQL queries</li>
+                        <li>Integrated OpenAI API for natural language understanding and query generation</li>
+                        <li>Designed FastAPI backend with authentication and rate limiting</li>
+                        <li>Implemented context-aware query validation and error handling</li>
+                        <li>Enabled business users to access data insights without SQL knowledge</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">OpenAI API</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">NLP</span>
+                        <span class="project-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">RAG-based Q&A System</h3>
+                            <p class="project-tech">Python | Milvus | OpenAI | LangChain | Docker</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Designed and deployed a Retrieval-Augmented Generation system combining vector search 
+                        with LLM inference for accurate, context-driven question answering. Built production-grade 
+                        microservice architecture.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Developed vector embedding pipeline using sentence transformers</li>
+                        <li>Implemented semantic search with Milvus vector database</li>
+                        <li>Combined retrieval mechanisms with LLM inference for accurate responses</li>
+                        <li>Built scalable REST APIs with FastAPI for document processing</li>
+                        <li>Containerized application with Docker and deployed on Azure ACI</li>
+                        <li>Implemented monitoring using Azure Application Insights</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">RAG</span>
+                        <span class="project-tag">Milvus</span>
+                        <span class="project-tag">Vector Embeddings</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Intelligent Chatbot with LLM</h3>
+                            <p class="project-tech">Python | FastAPI | Anthropic Claude | OpenAI | Redis</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Built intelligent chatbot application with context-aware conversation handling, 
+                        integrating multiple LLM APIs for natural language understanding and dynamic 
+                        response generation.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Integrated OpenAI and Anthropic Claude APIs for conversational AI</li>
+                        <li>Implemented context management and conversation history tracking</li>
+                        <li>Built FastAPI backend with WebSocket support for real-time interaction</li>
+                        <li>Designed prompt engineering strategies for optimal LLM responses</li>
+                        <li>Implemented rate limiting, authentication, and error handling</li>
+                        <li>Deployed microservice with CI/CD pipeline on Azure</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Anthropic Claude</span>
+                        <span class="project-tag">OpenAI</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">Prompt Engineering</span>
+                        <span class="project-tag">WebSocket</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Document Processing & NLP Pipeline</h3>
+                            <p class="project-tech">Python | Hugging Face | scikit-learn | FastAPI</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Implemented automated document processing and information extraction pipelines 
+                        using NLP techniques for data capture, classification, and entity extraction.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Built NLP-based text classification models using Hugging Face transformers</li>
+                        <li>Implemented entity extraction and named entity recognition (NER)</li>
+                        <li>Developed automated data capture workflows for structured data extraction</li>
+                        <li>Integrated machine learning models into FastAPI backend services</li>
+                        <li>Optimized model inference performance for real-time processing</li>
+                        <li>Created data enrichment pipelines with predictive analytics</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Hugging Face</span>
+                        <span class="project-tag">NLP</span>
+                        <span class="project-tag">Entity Extraction</span>
+                        <span class="project-tag">Text Classification</span>
+                        <span class="project-tag">ML Models</span>
+                    </div>
+                </div>
+
+                <!-- Data Engineering Projects -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Enterprise ETL Data Pipelines</h3>
+                            <p class="project-tech">Azure Data Factory | Databricks | PySpark | SQL</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Designed enterprise-grade ETL pipelines for multi-source data integration across 
+                        finance, wellness, and logistics domains. Handled structured and semi-structured 
+                        data at scale with automated orchestration.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Built modular ADF pipelines with parameterized datasets and ForEach loops</li>
+                        <li>Developed PySpark transformations in Azure Databricks for large-scale data</li>
+                        <li>Implemented event-driven triggers for batch and near real-time processing</li>
+                        <li>Designed robust data models with indexing and partitioning strategies</li>
+                        <li>Created data quality frameworks with error handling and monitoring</li>
+                        <li>Optimized pipeline performance with concurrency and partitioning logic</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Azure Data Factory</span>
+                        <span class="project-tag">Azure Databricks</span>
+                        <span class="project-tag">PySpark</span>
+                        <span class="project-tag">ETL</span>
+                        <span class="project-tag">Data Modeling</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">End-to-End Analytics Solution</h3>
+                            <p class="project-tech">Azure SQL | Power BI | Python | Azure DevOps</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Developed comprehensive analytics solution with data modeling, transformation layers, 
+                        and interactive visualizations supporting business intelligence use cases across 
+                        multiple domains.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Designed normalized data models for Azure SQL and PostgreSQL</li>
+                        <li>Built automated data orchestration with event-driven workflows</li>
+                        <li>Created interactive Power BI dashboards with incremental refresh</li>
+                        <li>Implemented row-level security and data governance policies</li>
+                        <li>Established CI/CD pipelines using Azure DevOps for data workflows</li>
+                        <li>Ensured SLA-compliant processing with monitoring and alerting</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Azure SQL</span>
+                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">Data Warehousing</span>
+                        <span class="project-tag">CI/CD</span>
+                        <span class="project-tag">Azure DevOps</span>
+                    </div>
+                </div>
+
+                <!-- Stay Tuned Card -->
+                <div class="project-card" style="border: 2px dashed rgba(255,255,255,0.3); text-align: center;">
+                    <div class="project-header">
+                        <div style="width: 100%;">
+                            <h3 class="project-title">Stay Tuned! 🚀</h3>
+                            <p class="project-tech">Personal Projects Showcase</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Demos of some exciting personal projects I've built apart from my professional work 
+                        will be shared soon on this site. These include innovative AI/ML applications, 
+                        automation tools, and experimental projects showcasing cutting-edge technologies.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Coming Soon</span>
+                        <span class="project-tag">Personal Projects</span>
+                        <span class="project-tag">Demos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Building AI-powered systems and data solutions</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">January 2024 – Present</span>
+                    <h3 class="timeline-title">Associate Data / AI Engineer</h3>
+                    <div class="timeline-company">Rishabh Software • Vadodara, Gujarat</div>
+
+                    <div class="timeline-section">
+                        <h4 class="timeline-section-title">AI Engineering & Backend Development</h4>
+                        <ul class="timeline-highlights">
+                            <li>Designed and deployed AI-powered backend services using FastAPI and Python, integrating LLM APIs (OpenAI, Anthropic) and vector databases (Milvus, Pinecone) for semantic search and RAG applications</li>
+                            <li>Built production-grade REST APIs with FastAPI for AI model inference, document processing, and real-time data enrichment, implementing authentication, rate limiting, and error handling</li>
+                            <li>Developed vector embedding pipelines using sentence transformers and OpenAI embeddings, storing high-dimensional vectors in Milvus for similarity search and recommendation engines</li>
+                            <li>Integrated machine learning models into backend workflows, including NLP-based text classification, entity extraction, and predictive analytics using scikit-learn and Hugging Face transformers</li>
+                            <li>Containerized AI/ML applications using Docker and deployed microservices on Azure Container Instances (ACI) and Azure Kubernetes Service (AKS) with CI/CD pipelines via Azure DevOps</li>
+                            <li>Implemented monitoring and logging for AI services using Azure Application Insights and Prometheus, tracking API performance, latency, and model inference metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-section">
+                        <h4 class="timeline-section-title">Azure Data Engineering & ETL</h4>
+                        <ul class="timeline-highlights">
+                            <li>Designed and implemented enterprise-grade ETL pipelines using Azure Data Factory (ADF), automating end-to-end data ingestion from on-prem and cloud-based sources into Azure SQL Database and Azure Data Lake Storage</li>
+                            <li>Built modular ADF pipelines with parameterized datasets, lookup activities, ForEach loops, and event-based triggers, supporting scalable ingestion of CSV, JSON, and Parquet files</li>
+                            <li>Developed data transformation logic using PySpark and Azure Databricks for cleansing, enrichment, and aggregation of large-scale datasets</li>
+                            <li>Orchestrated data integration workflows across multiple business domains (finance, wellness, logistics), ensuring SLA-compliant batch and near real-time processing</li>
+                            <li>Designed robust data models for Azure SQL and PostgreSQL, including indexing, partitioning, and schema normalization to support analytics and AI/ML use cases</li>
+                            <li>Created and maintained interactive Power BI dashboards using structured models from Azure SQL, with support for incremental refresh and row-level security</li>
+                            <li>Optimized long-running data workflows by implementing pipeline concurrency, data partitioning, and file-based processing logic</li>
+                            <li>Collaborated in code versioning and CI/CD of data pipelines using Azure DevOps and Git-based repositories</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Validated expertise and continuous learning</p>
+
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">Microsoft</div>
+                    <div class="cert-text">Azure Fundamentals (AZ-900)</div>
+                    <div class="cert-issuer">Microsoft Certified</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">HackerRank</div>
+                    <div class="cert-text">SQL Problem Solving</div>
+                    <div class="cert-issuer">HackerRank Certified</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">HackerRank</div>
+                    <div class="cert-text">Python Problem Solving (Gold Level)</div>
+                    <div class="cert-issuer">HackerRank Certified</div>
+                </div>
+                <div class="cert-card" style="border: 2px dashed rgba(255,255,255,0.3);">
+                    <div class="cert-icon">...</div>
+                    <div class="cert-text">Stay Tuned!</div>
+                    <div class="cert-issuer">Continuously developing skills - More certifications in AI/ML and Cloud coming soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Open for opportunities in AI Engineering & Data Solutions</p>
+                
+                <p style="font-size: 18px; color: #bbbbbb; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Interested in collaborating on AI/ML or data engineering projects? Let's discuss how 
+                    we can build intelligent, scalable solutions that deliver real business impact.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">@</div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="/cdn-cgi/l/email-protection#45352437282437242b2c373021212d77737c052228242c296b262a28"><span class="__cf_email__" data-cfemail="2d5d4c5f404c5f4c43445f584949451f1b146d4a404c4441034e4240">[email&#160;protected]</span></a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">PH</div>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">
+                            <a href="tel:+919714864659">+91 9714864659</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">IN</div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">
+                            <a href="https://linkedin.com/in/aniruddhsinh-parmar-51676023a" target="_blank">Connect on LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">LOC</div>
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Vadodara, Gujarat</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons" style="justify-content: center; margin-top: 60px;">
+                    <a href="/cdn-cgi/l/email-protection#98e8f9eaf5f9eaf9f6f1eaedfcfcf0aaaea1d8fff5f9f1f4b6fbf7f5" class="btn btn-primary">
+                        <span>Send Email</span>
+                    </a>
+                    <a href="https://linkedin.com/in/aniruddhsinh-parmar-51676023a" target="_blank" class="btn btn-secondary">
+                        <span>View LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aniruddh Parmar. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Generate particles
+        function createParticles() {
+            const bgAnimation = document.querySelector('.bg-animation');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                bgAnimation.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('section, .project-card, .timeline-item, .cert-card, .skill-category').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(40px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroText = document.querySelector('.hero-text');
+            const heroVisual = document.querySelector('.hero-visual');
+            
+            if (heroText && scrolled < window.innerHeight) {
+                heroText.style.transform = `translateY(${scrolled * 0.3}px)`;
+                if (heroVisual) {
+                    heroVisual.style.transform = `translateY(${scrolled * 0.15}px)`;
+                }
+            }
+        });
+
+        // Button ripple effect
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Robot eyes follow mouse
+        function makeEyesFollowMouse() {
+            const leftEye = document.getElementById('leftEye');
+            const rightEye = document.getElementById('rightEye');
+            const leftPupil = document.getElementById('leftPupil');
+            const rightPupil = document.getElementById('rightPupil');
+
+            if (!leftEye || !rightEye) return;
+
+            document.addEventListener('mousemove', (e) => {
+                // Left eye
+                const leftEyeRect = leftEye.getBoundingClientRect();
+                const leftEyeCenterX = leftEyeRect.left + leftEyeRect.width / 2;
+                const leftEyeCenterY = leftEyeRect.top + leftEyeRect.height / 2;
+                
+                const leftAngle = Math.atan2(e.clientY - leftEyeCenterY, e.clientX - leftEyeCenterX);
+                const leftDistance = Math.min(12, Math.hypot(e.clientX - leftEyeCenterX, e.clientY - leftEyeCenterY) / 20);
+                
+                const leftPupilX = Math.cos(leftAngle) * leftDistance;
+                const leftPupilY = Math.sin(leftAngle) * leftDistance;
+                
+                leftPupil.style.transform = `translate(calc(-50% + ${leftPupilX}px), calc(-50% + ${leftPupilY}px))`;
+
+                // Right eye
+                const rightEyeRect = rightEye.getBoundingClientRect();
+                const rightEyeCenterX = rightEyeRect.left + rightEyeRect.width / 2;
+                const rightEyeCenterY = rightEyeRect.top + rightEyeRect.height / 2;
+                
+                const rightAngle = Math.atan2(e.clientY - rightEyeCenterY, e.clientX - rightEyeCenterX);
+                const rightDistance = Math.min(12, Math.hypot(e.clientX - rightEyeCenterX, e.clientY - rightEyeCenterY) / 20);
+                
+                const rightPupilX = Math.cos(rightAngle) * rightDistance;
+                const rightPupilY = Math.sin(rightAngle) * rightDistance;
+                
+                rightPupil.style.transform = `translate(calc(-50% + ${rightPupilX}px), calc(-50% + ${rightPupilY}px))`;
+            });
+        }
+
+        // Initialize robot eyes
+        makeEyesFollowMouse();
+
+        // Mini Robot Assistant - Visitor asking about you
+        const miniRobot = document.getElementById('miniRobotAssistant');
+        const speechBubble = document.getElementById('speechBubble');
+        const speechText = document.getElementById('speechText');
+        const mainRobotExpression = document.getElementById('mainRobotExpression');
+        const mainRobotBubble = document.getElementById('mainRobotBubble');
+        const heroVisualContainer = document.querySelector('.hero-visual');
+        const leftPupil = document.getElementById('leftPupil');
+        const rightPupil = document.getElementById('rightPupil');
+        const heroH1 = document.querySelector('.hero h1');
+        
+        let currentSection = 'home';
+        let conversationIndex = 0;
+        let conversationInterval;
+        let conversationCount = 0;
+        let isOnRightSide = true;
+
+        // Casual, human-like conversations with expressions
+        const robotConversations = [
+            {
+                visitor: "Hey! Who are you?",
+                you: "I'm Aniruddh Parmar! Nice to meet you! 😊",
+                expression: "😊",
+                side: "right"
+            },
+            {
+                visitor: "Cool! So where do you work?",
+                you: "At Rishabh Software, it's awesome! 💼",
+                expression: "💼",
+                side: "left"
+            },
+            {
+                visitor: "That's great! What's your role there?",
+                you: "I'm an Associate Data / AI Engineer! 🤖",
+                expression: "🤖",
+                side: "right"
+            },
+            {
+                visitor: "Nice! How long have you been doing this?",
+                you: "2.5+ years now! Time flies! ⏰",
+                expression: "⭐",
+                side: "left"
+            },
+            {
+                visitor: "Wow! What tech stack do you use?",
+                you: "Python, FastAPI, Azure, PySpark - love them! 💻",
+                expression: "💻",
+                side: "right"
+            },
+            {
+                visitor: "Impressive! Tell me about your AI work!",
+                you: "I build LLM apps with RAG and vector search! 🧠",
+                expression: "🧠",
+                side: "left"
+            },
+            {
+                visitor: "That sounds exciting! What about databases?",
+                you: "PostgreSQL, MongoDB, Milvus, Pinecone! 🗄️",
+                expression: "🗄️",
+                side: "right"
+            },
+            {
+                visitor: "Nice stack! Any cloud platforms?",
+                you: "Yeah! Azure Data Factory & Databricks! ☁️",
+                expression: "☁️",
+                side: "left"
+            },
+            {
+                visitor: "Sweet! What do you actually build?",
+                you: "AI-powered backends and ETL pipelines! ⚙️",
+                expression: "⚙️",
+                side: "right"
+            },
+            {
+                visitor: "Sounds complex! Do you work with LLMs?",
+                you: "Absolutely! OpenAI and Claude APIs daily! 🤖",
+                expression: "🤖",
+                side: "left"
+            },
+            {
+                visitor: "Amazing! What's vector search exactly?",
+                you: "It's semantic search using Milvus! Super cool! 🔍",
+                expression: "🔍",
+                side: "right"
+            },
+            {
+                visitor: "Got it! Any certifications?",
+                you: "Azure AZ-900 and HackerRank Gold! 🏆",
+                expression: "🏆",
+                side: "left"
+            },
+            {
+                visitor: "Nice achievements! What makes you unique?",
+                you: "I combine Gen AI with Data Engineering! ✨",
+                expression: "✨",
+                side: "right"
+            },
+            {
+                visitor: "That's rare! Any cool projects?",
+                you: "NL2SQL systems and intelligent chatbots! 🚀",
+                expression: "🚀",
+                side: "left"
+            },
+            {
+                visitor: "Awesome! What's your favorite part?",
+                you: "Building RAG apps - so much fun! 🎯",
+                expression: "🎯",
+                side: "right"
+            },
+            {
+                visitor: "I bet! Do you do MLOps too?",
+                you: "Yes! Docker, Kubernetes, CI/CD pipelines! 🐳",
+                expression: "🛠️",
+                side: "left"
+            },
+            {
+                visitor: "Full stack then! What about APIs?",
+                you: "FastAPI is my go-to! So fast and clean! ⚡",
+                expression: "⚡",
+                side: "right"
+            },
+            {
+                visitor: "I can tell you love it! Azure services?",
+                you: "ADF, Databricks, AKS - use them all! 💙",
+                expression: "☁️",
+                side: "left"
+            },
+            {
+                visitor: "Impressive setup! What about data modeling?",
+                you: "Star schema, snowflake - I got you! 📊",
+                expression: "📊",
+                side: "right"
+            },
+            {
+                visitor: "Perfect! Any AI frameworks you prefer?",
+                you: "LangChain, Hugging Face - they're amazing! 🤗",
+                expression: "🤗",
+                side: "left"
+            },
+            {
+                visitor: "Great choices! What about Power BI?",
+                you: "Love it! Creating dashboards is so satisfying! 📈",
+                expression: "📈",
+                side: "right"
+            },
+            {
+                visitor: "I can see! What's your biggest strength?",
+                you: "Turning complex data into smart solutions! 💡",
+                expression: "💡",
+                side: "left"
+            },
+            {
+                visitor: "That's valuable! Future goals?",
+                you: "Master more Gen AI and scale bigger systems! 🎯",
+                expression: "🎯",
+                side: "right"
+            },
+            {
+                visitor: "Keep going! You're doing great! 👍",
+                you: "Thanks! Really appreciate it! 😄",
+                expression: "😄",
+                side: "left"
+            }
+        ];
+
+        // Position mini robot on RIGHT side
+        function positionMiniRobotRight() {
+            if (!heroVisualContainer) return;
+
+            const mainRect = heroVisualContainer.getBoundingClientRect();
+            const x = mainRect.right + 50;
+            const y = mainRect.top + mainRect.height / 2 - 60;
+
+            miniRobot.style.left = x + 'px';
+            miniRobot.style.top = y + 'px';
+            miniRobot.classList.add('side-position');
+            miniRobot.classList.remove('conversation-position');
+            isOnRightSide = true;
+        }
+
+        // Position mini robot on LEFT side
+        function positionMiniRobotLeft() {
+            if (!heroVisualContainer) return;
+
+            const mainRect = heroVisualContainer.getBoundingClientRect();
+            const x = mainRect.left - 140;
+            const y = mainRect.top + mainRect.height / 2 - 60;
+
+            miniRobot.style.left = x + 'px';
+            miniRobot.style.top = y + 'px';
+            miniRobot.classList.add('side-position');
+            miniRobot.classList.remove('conversation-position');
+            isOnRightSide = false;
+        }
+
+        // Position at name
+        function positionMiniRobotAtName() {
+            if (!heroH1) return;
+
+            const nameRect = heroH1.getBoundingClientRect();
+            const x = nameRect.right + 20;
+            const y = nameRect.top + nameRect.height / 2 - 60;
+
+            miniRobot.style.left = x + 'px';
+            miniRobot.style.top = y + 'px';
+            miniRobot.classList.add('conversation-position');
+            miniRobot.classList.remove('side-position');
+        }
+
+        // Make main robot eyes follow mini robot
+        function makeMainRobotEyesFollowMini() {
+            if (!leftPupil || !rightPupil || !miniRobot) return;
+
+            const miniRect = miniRobot.getBoundingClientRect();
+            const miniCenterX = miniRect.left + miniRect.width / 2;
+            const miniCenterY = miniRect.top + miniRect.height / 2;
+
+            // Left eye
+            const leftEye = document.getElementById('leftEye');
+            if (leftEye) {
+                const leftEyeRect = leftEye.getBoundingClientRect();
+                const leftEyeCenterX = leftEyeRect.left + leftEyeRect.width / 2;
+                const leftEyeCenterY = leftEyeRect.top + leftEyeRect.height / 2;
+                
+                const leftAngle = Math.atan2(miniCenterY - leftEyeCenterY, miniCenterX - leftEyeCenterX);
+                const leftDistance = 12;
+                
+                const leftPupilX = Math.cos(leftAngle) * leftDistance;
+                const leftPupilY = Math.sin(leftAngle) * leftDistance;
+                
+                leftPupil.style.transform = `translate(calc(-50% + ${leftPupilX}px), calc(-50% + ${leftPupilY}px))`;
+            }
+
+            // Right eye
+            const rightEye = document.getElementById('rightEye');
+            if (rightEye) {
+                const rightEyeRect = rightEye.getBoundingClientRect();
+                const rightEyeCenterX = rightEyeRect.left + rightEyeRect.width / 2;
+                const rightEyeCenterY = rightEyeRect.top + rightEyeRect.height / 2;
+                
+                const rightAngle = Math.atan2(miniCenterY - rightEyeCenterY, miniCenterX - rightEyeCenterX);
+                const rightDistance = 12;
+                
+                const rightPupilX = Math.cos(rightAngle) * rightDistance;
+                const rightPupilY = Math.sin(rightAngle) * rightDistance;
+                
+                rightPupil.style.transform = `translate(calc(-50% + ${rightPupilX}px), calc(-50% + ${rightPupilY}px))`;
+            }
+        }
+
+        // Update positions continuously
+        function updatePositions() {
+            if (currentSection === 'home') {
+                makeMainRobotEyesFollowMini();
+            }
+            requestAnimationFrame(updatePositions);
+        }
+
+        // Show conversation with alternating sides - FASTER!
+        function showConversation() {
+            if (currentSection !== 'home') return;
+
+            const conversation = robotConversations[conversationIndex];
+            conversationIndex = (conversationIndex + 1) % robotConversations.length;
+            conversationCount++;
+
+            // Special: Go to name on 1st conversation (intro)
+            if (conversationCount === 1) {
+                positionMiniRobotAtName();
+                
+                speechText.textContent = "Hey! Is this Aniruddh Parmar's portfolio? 👋";
+                speechBubble.classList.add('show');
+                
+                setTimeout(() => {
+                    if (mainRobotBubble) {
+                        mainRobotBubble.textContent = "Yeah! Welcome! Let's chat! 😊";
+                        mainRobotBubble.classList.add('show');
+                    }
+                    if (mainRobotExpression) {
+                        mainRobotExpression.textContent = "😊";
+                        mainRobotExpression.classList.add('show');
+                    }
+                }, 1000);
+
+                setTimeout(() => {
+                    positionMiniRobotRight();
+                    speechBubble.classList.remove('show');
+                    if (mainRobotBubble) mainRobotBubble.classList.remove('show');
+                    if (mainRobotExpression) mainRobotExpression.classList.remove('show');
+                }, 3500);
+                
+                return;
+            }
+
+            // Alternate position based on conversation side
+            if (conversation.side === 'right') {
+                positionMiniRobotRight();
+            } else {
+                positionMiniRobotLeft();
+            }
+
+            // Wait 0.5s for position change animation, then show conversation (FASTER!)
+            setTimeout(() => {
+                // Step 1: Visitor asks question
+                speechText.textContent = conversation.visitor;
+                speechBubble.classList.add('show');
+
+                // Step 2: You answer after 1 second (FASTER!)
+                setTimeout(() => {
+                    if (mainRobotBubble) {
+                        mainRobotBubble.textContent = conversation.you;
+                        mainRobotBubble.classList.add('show');
+                    }
+                    if (mainRobotExpression) {
+                        mainRobotExpression.textContent = conversation.expression;
+                        mainRobotExpression.classList.add('show');
+                    }
+                }, 1000);
+
+                // Step 3: Hide after 3.5 seconds (FASTER!)
+                setTimeout(() => {
+                    speechBubble.classList.remove('show');
+                    if (mainRobotBubble) {
+                        mainRobotBubble.classList.remove('show');
+                    }
+                    if (mainRobotExpression) {
+                        mainRobotExpression.classList.remove('show');
+                    }
+                }, 3500);
+            }, 500);
+        }
+
+        // Track current section
+        const sections = document.querySelectorAll('section');
+        const observerForSection = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                    const sectionId = entry.target.id;
+                    if (sectionId && sectionId !== currentSection) {
+                        currentSection = sectionId;
+                        
+                        if (sectionId === 'home') {
+                            document.body.classList.add('on-home');
+                            positionMiniRobotRight();
+                            updatePositions();
+                            // Start conversations every 5 seconds (FASTER!)
+                            conversationInterval = setInterval(showConversation, 5000);
+                            // Show first conversation after 2 seconds
+                            setTimeout(showConversation, 2000);
+                        } else {
+                            document.body.classList.remove('on-home');
+                            clearInterval(conversationInterval);
+                        }
+                    }
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        sections.forEach(section => {
+            observerForSection.observe(section);
+        });
+
+        // Manual click to trigger conversation
+        miniRobot.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('close-bubble')) {
+                showConversation();
+            }
+        });
+
+        // Close speech bubble
+        function closeSpeech() {
+            speechBubble.classList.remove('show');
+        }
+
+        // Initialize on home section
+        if (window.location.hash === '' || window.location.hash === '#home') {
+            currentSection = 'home';
+            document.body.classList.add('on-home');
+            positionMiniRobotRight();
+            updatePositions();
+            setTimeout(showConversation, 2000);
+            conversationInterval = setInterval(showConversation, 5000);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (currentSection === 'home') {
+                if (isOnRightSide) {
+                    positionMiniRobotRight();
+                } else {
+                    positionMiniRobotLeft();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
